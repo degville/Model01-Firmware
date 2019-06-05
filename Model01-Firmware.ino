@@ -92,6 +92,8 @@
   */
 
 enum { MACRO_VERSION_INFO,
+       M_MOUSE_FAST,
+       M_MOUSE_SLOW,
        MACRO_ANY
      };
 
