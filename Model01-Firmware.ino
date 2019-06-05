@@ -526,6 +526,11 @@ void setup() {
   // needs to be explicitly told which keymap layer is your numpad layer
   NumPad.numPadLayer = NUMPAD;
 
+  // GM: mouse control customisation
+  MouseKeys.speed = 6;
+  MouseKeys.speedDelay = 1;
+  MouseKeys.accelSpeed = 0.8;
+
   // We configure the AlphaSquare effect to use RED letters
   AlphaSquare.color = CRGB(255, 0, 0);
 
