@@ -483,10 +483,10 @@ KALEIDOSCOPE_INIT_PLUGINS(
   // AlphaSquareEffect,
 
   // The stalker effect lights up the keys you've pressed recently
-  StalkerEffect,
+  //StalkerEffect,
 
   // The Colormap effect makes it possible to set up per-layer colormaps
-  ColormapEffect,
+  //ColormapEffect,
 
   // The numpad plugin is responsible for lighting up the 'numpad' mode
   // with a custom LED effect
@@ -527,7 +527,7 @@ void setup() {
   NumPad.numPadLayer = NUMPAD;
 
   // GM: mouse control customisation
-  MouseKeys.speed = 6;
+  MouseKeys.speed = 7;
   MouseKeys.speedDelay = 1;
   MouseKeys.accelSpeed = 0.8;
 
@@ -559,7 +559,7 @@ void setup() {
   // We need to tell the Colormap plugin how many layers we want to have custom
   // maps for. To make things simple, we set it to five layers, which is how
   // many editable layers we have (see above).
-  ColormapEffect.max_layers(5);
+   ColormapEffect.max_layers(5);
 }
 
 /** loop is the second of the standard Arduino sketch functions.
