@@ -270,10 +270,10 @@ KEYMAPS(
   [FUNCTION] =  KEYMAP_STACKED
 // GM: Mouse ESDF
   (___,                 Key_F1,           Key_F2,          Key_F3,        Key_F4,           Key_F5,           Key_CapsLock,
-   Key_Tab,             ___,              Key_mouseBtnR,   Key_mouseUp,   Key_mouseBtnL,    Key_mouseWarpEnd, Key_mouseWarpNE,
+   Key_Tab,             ___,              ___,   Key_mouseUp,   ___,    Key_mouseWarpEnd, Key_mouseWarpNE,
    Key_mouseScrollUp,   ___,              Key_mouseL,      Key_mouseDn,   Key_mouseR,       Key_mouseWarpNW,
-   Key_mouseScrollDn,   Key_PrintScreen,  Key_Insert,      Key_mouseBtnM, ___,              Key_mouseWarpSW,  Key_mouseWarpSE,
-   M(M_MOUSE_FAST), Key_Delete, M(M_MOUSE_SLOW), ___,
+   Key_mouseScrollDn,    M(M_MOUSE_SLOW),  Key_Insert,      ___, Key_mouseBtnM,              Key_mouseWarpSW,  Key_mouseWarpSE,
+   M(M_MOUSE_FAST), Key_Delete, Key_mouseBtnL, Key_mouseBtnR,
    ___,
 
    Consumer_ScanPreviousTrack, Key_F6,                 Key_F7,                   Key_F8,                   Key_F9,          Key_F10,          Key_F11,
@@ -339,23 +339,27 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
     case M_MOUSE_SLOW:
       if (keyIsPressed(keyState)) {
         MouseKeys.speed = 3;
-        MouseKeys.speedDelay = 1;
-        MouseKeys.accelSpeed = 0.8;
+        MouseKeys.speedDelay = 0;
+        MouseKeys.accelDelay = 25;
+        MouseKeys.accelSpeed = 0.9;
       } else {
-        MouseKeys.speed = 6;
-        MouseKeys.speedDelay = 1;
-        MouseKeys.accelSpeed = 0.8;
+        MouseKeys.speed = 8;
+        MouseKeys.speedDelay = 0;
+        MouseKeys.accelDelay = 25;
+        MouseKeys.accelSpeed = 0.9;
       }
       break;
     case M_MOUSE_FAST:
       if (keyIsPressed(keyState)) {
-        MouseKeys.speed = 14;
-        MouseKeys.speedDelay = 1;
-        MouseKeys.accelSpeed = 0.8;
+        MouseKeys.speed = 16;
+        MouseKeys.speedDelay = 0;
+        MouseKeys.accelDelay = 25;
+        MouseKeys.accelSpeed = 0.9;
       } else {
-        MouseKeys.speed = 6;
-        MouseKeys.speedDelay = 1;
-        MouseKeys.accelSpeed = 0.8;
+        MouseKeys.speed = 8;
+        MouseKeys.speedDelay = 0;
+        MouseKeys.accelDelay = 25;
+        MouseKeys.accelSpeed = 0.9;
       }
       break;
 
@@ -527,9 +531,13 @@ void setup() {
   NumPad.numPadLayer = NUMPAD;
 
   // GM: mouse control customisation
-  MouseKeys.speed = 7;
-  MouseKeys.speedDelay = 1;
-  MouseKeys.accelSpeed = 0.8;
+  // There's a bug in avr/libraries/Kaleidoscope/src/kaleidoscope/plugin/MouseKeys/MouseWrapper.cpp
+  // stopping diagonalized movement when MouseKeys.speedLimit(16) is set.
+  MouseKeys.speed = 8;
+  MouseKeys.speedDelay = 0;
+  MouseKeys.accelDelay = 25;
+  MouseKeys.accelSpeed = 0.9;
+  
 
   // We configure the AlphaSquare effect to use RED letters
   // AlphaSquare.color = CRGB(255, 0, 0);
