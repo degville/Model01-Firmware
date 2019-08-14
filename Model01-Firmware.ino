@@ -280,7 +280,7 @@ KEYMAPS(
    Consumer_PlaySlashPause,    Consumer_ScanNextTrack, Key_LeftCurlyBracket,     Key_RightCurlyBracket,    Key_LeftBracket, Key_RightBracket, Key_F12,
                                Key_LeftArrow,          Key_DownArrow,            Key_UpArrow,              Key_RightArrow,  ___,              ___,
    Key_PcApplication,          Consumer_Mute,          Consumer_VolumeDecrement, Consumer_VolumeIncrement, ___,             Key_Backslash,    Key_Pipe,
-   ___, ___, Key_Enter, ___,
+   M(M_MOUSE_SLOW), ___, Key_Enter, M(M_MOUSE_FAST),
    ___)
 ) // KEYMAPS(
 
@@ -343,7 +343,7 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
         MouseKeys.accelDelay = 25;
         MouseKeys.accelSpeed = 0.9;
       } else {
-        MouseKeys.speed = 8;
+        MouseKeys.speed = 6;
         MouseKeys.speedDelay = 0;
         MouseKeys.accelDelay = 25;
         MouseKeys.accelSpeed = 0.9;
@@ -351,12 +351,12 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
       break;
     case M_MOUSE_FAST:
       if (keyIsPressed(keyState)) {
-        MouseKeys.speed = 16;
+        MouseKeys.speed = 18;
         MouseKeys.speedDelay = 0;
         MouseKeys.accelDelay = 25;
         MouseKeys.accelSpeed = 0.9;
       } else {
-        MouseKeys.speed = 8;
+        MouseKeys.speed = 6;
         MouseKeys.speedDelay = 0;
         MouseKeys.accelDelay = 25;
         MouseKeys.accelSpeed = 0.9;
@@ -533,7 +533,7 @@ void setup() {
   // GM: mouse control customisation
   // There's a bug in avr/libraries/Kaleidoscope/src/kaleidoscope/plugin/MouseKeys/MouseWrapper.cpp
   // stopping diagonalized movement when MouseKeys.speedLimit(16) is set.
-  MouseKeys.speed = 8;
+  MouseKeys.speed = 7;
   MouseKeys.speedDelay = 0;
   MouseKeys.accelDelay = 25;
   MouseKeys.accelSpeed = 0.9;
